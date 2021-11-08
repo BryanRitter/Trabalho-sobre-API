@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <div>
+        <fieldset>
+            <legend>joke of day</legend>
+            <div id="joke-div"></div>
+        </fieldset>
+    </div>
+</head>
+<body>
+    <script>
+        let token = "b4a83385f59040ba8815b4c7da4e2061"
+        let url = "https://api.humorapi.com/jokes/random?api-key="+token
+        let jokeDiv = document.getElementById("joke-div")
+        let p = document.createElement("p")
+
+        fetch(url).then(function(resp){
+            resp.json().then(function(result){
+                p.innerText = result['joke']
+                jokeDiv.appendChild(p)
+            })
+        })
+    </script>
+</body>
+</html>
